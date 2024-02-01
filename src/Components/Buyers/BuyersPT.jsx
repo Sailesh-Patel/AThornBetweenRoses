@@ -20,6 +20,9 @@ function BuyersPT(props) {
           <p>{props.address}</p>
           <p>{props.postcode}</p>
           <p>{props.phoneNumber}</p>
+          <button type="submit" className="btn btn-danger btn-md">
+          Delete
+        </button>
         </div>
       </div>
     </Card>
