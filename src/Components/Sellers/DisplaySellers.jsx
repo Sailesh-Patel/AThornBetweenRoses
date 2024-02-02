@@ -20,11 +20,13 @@ function DisplaySellers(props) {
     sellerArray.push(
       <SellersPT
         key={seller.firstName + " " + seller.postcode}
+        id={seller.id}
         firstName={seller.firstName}
         lastName={seller.lastName}
         address={seller.address}
         postcode={seller.postcode}
         phoneNumber={seller.phoneNumber}
+        getSellers={props.getSellers}
       />
     );
   }

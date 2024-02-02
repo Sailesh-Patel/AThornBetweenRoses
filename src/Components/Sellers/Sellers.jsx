@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import DisplaySellers from "./GetSellers";
+import DisplaySellers from "./DisplaySellers";
 
 function Sellers(props) {
   const [firstName, setFirstName] = useState("");
