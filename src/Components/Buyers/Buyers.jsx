@@ -3,6 +3,7 @@ import axios from "axios";
 import DisplayBuyers from "./DisplayBuyers";
 
 function Buyers(props) {
+  const [id, setId] = useState("");
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [address, setAddress] = useState("");
