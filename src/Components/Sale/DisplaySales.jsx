@@ -2,9 +2,10 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import PropertiesForSalePT from "./PropertiesForSalePT";
 import { useNavigate } from "react-router-dom";
+// import PropertiesForSale from "/PropertiesForSale";
 
-function GetSale() {
-  const [sale, setSale] = useState([]);
+function DisplaySales(props) {
+  // const [sale, setSale] = useState([]);
   const [filterty, setFilterty] = useState("");
   const [filterpr, setFilterpr] = useState("");
   const [filterbd, setFilterbd] = useState("");
@@ -14,19 +15,8 @@ function GetSale() {
   const [filterpc, setFilterpc] = useState("");
   // const navigate = useNavigate();
 
-  useEffect(function () {
-    axios
-      .get("http://localhost:8082/PSale/get")
-      .then((response) => {
-        console.log("Response:", response);
-        setSale(response.data);
-        console.log("sale:", sale);
-      })
-      .catch((err) => console.error(err));
-  }, []);
-
   const saleArray = [];
-  for (const psale of sale) {
+  for (const psale of props.sales) {
     if (filterty && !psale.type.toLowerCase().includes(filterty.toLowerCase())) continue;
     if (filterpr && psale.price > parseInt(filterpr)) continue;
     if (filterbd && psale.bedrooms < parseInt(filterbd)) continue;
@@ -46,6 +36,7 @@ function GetSale() {
         address={psale.address}
         postcode={psale.postcode}
         id={psale.id}
+       
       />
     );
   }
@@ -134,4 +125,4 @@ function GetSale() {
   );
 }
 
-export default GetSale;
+export default DisplaySales;

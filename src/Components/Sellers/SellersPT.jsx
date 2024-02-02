@@ -1,9 +1,16 @@
 import PropTypes from 'prop-types'
 import Sellers from './Sellers';
 import Card from "react-bootstrap/Card";
-
+import axios from 'axios';
 
 function SellersPT(props) {
+
+  function deleteSeller (){
+    axios.delete("http://localhost:8082/sellers/delete/" + props.id)
+    .then(response => {props.getSellers()})
+    .catch(err => console.error(err))
+    }
+
   return (
     <Card className="col-sm-6 col-md-4 col-lg-3 m-4">
       <div className="flex">
@@ -20,6 +27,8 @@ function SellersPT(props) {
           <p>{props.address}</p>
           <p>{props.postcode}</p>
           <p>{props.phoneNumber}</p>
+
+          <p><button className="btn btn-danger" onClick={deleteSeller}>Delete</button></p>
         </div>
       </div>
     </Card>

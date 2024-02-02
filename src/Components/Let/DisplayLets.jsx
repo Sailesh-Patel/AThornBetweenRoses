@@ -2,8 +2,8 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import PropertiesToLetPT from "./PropertiesToLetPT";
 
-function GetLet() {
-  const [letting, setLet] = useState([]);
+function DisplayLets(props) {
+  // const [letting, setLet] = useState([]);
   const [filtertyp, setFiltertyp] = useState("");
   const [filterrt, setFilterrt] = useState("");
   const [filterbds, setFilterbds] = useState("");
@@ -12,20 +12,20 @@ function GetLet() {
   const [filterads, setFilterads] = useState("");
   const [filterpcd, setFilterpcd] = useState("");
 
-  useEffect(function () {
-    axios
-    // this is a get request from the server for new properties that have been added
-      .get("http://localhost:8082/PLet/get")
-      .then((response) => {
-        console.log("Response:", response);
-        setLet(response.data);
-        console.log("let:", letting);
-      })
-      .catch((err) => console.error(err));
-  }, []);
+  // useEffect(function () {
+  //   axios
+  //   // this is a get request from the server for new properties that have been added
+  //     .get("http://localhost:8082/PLet/get")
+  //     .then((response) => {
+  //       console.log("Response:", response);
+  //       setLet(response.data);
+  //       console.log("let:", letting);
+  //     })
+  //     .catch((err) => console.error(err));
+  // }, []);
 
   const letArray = [];
-  for (const plet of letting) {
+  for (const plet of props.lets) {
     if (filtertyp && !plet.type.toLowerCase().includes(filtertyp.toLowerCase())) continue;
     if (filterrt && plet.rent > parseInt(filterrt)) continue;
     if (filterbds && plet.bedrooms < parseInt(filterbds)) continue;
@@ -132,4 +132,4 @@ function GetLet() {
   );
 }
 
-export default GetLet;
+export default DisplayLets;

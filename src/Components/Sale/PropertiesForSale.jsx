@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import GetSale from "./GetSale";
+import DisplaySales from "./DisplaySales";
 
 function PropertiesForSale() {
   const [type, setType] = useState("");
@@ -10,6 +10,13 @@ function PropertiesForSale() {
   const [garden, setGarden] = useState("");
   const [address, setAddress] = useState("");
   const [postcode, setPostcode] = useState("");
+  const [sales, setSales] = useState([]);
+
+  function getSales () {
+    axios.get("http://localhost:8082/PSale/get")
+      .then((response) => {setSales(response.data)})
+  }
+  useEffect(getSales, [])
 
   return (
     <div className="row">
@@ -37,9 +44,12 @@ function PropertiesForSale() {
                 setGarden("");
                 setAddress("");
                 setPostcode("");
+                getSales();
               })
               .catch((err) => console.error(err));
           }}
+
+          
         >
           <h1>Properties For Sale</h1>
           {/* <select value={Type} onChange={(e) => setType(e.target.value)} id="ty" type="text"><option value="semi">Semi</option><option value="semi">detached</option><option value="semi">terrace</option></select> */}
@@ -125,7 +135,7 @@ function PropertiesForSale() {
         <br />
       </div>
 
-      <GetSale />
+      <DisplaySales sales={sales} />
 
       <br />
     </div>
