@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import Card from "react-bootstrap/Card";
 import { useNavigate, useParams } from "react-router-dom";
+import { Row } from "react-bootstrap";
 
 
 function BookingLet() {
@@ -34,6 +35,8 @@ function BookingLet() {
     <div className="booking-container">
       <div className="booking-form">
       <h1>Bookings to Let</h1>
+      <div class="row" style={{maxWidth:"1000px"}}>
+      <div class="col">
       <form
         onSubmit={(e) => {
           e.preventDefault();
@@ -108,11 +111,15 @@ function BookingLet() {
           Submit
         </button>
       </form>
+      </div>
       <br />
       <br />
+
+      <div class="col">
       {letProperty ? (
-      <div className="container-fluid">
-      <Card className="col-sm-6 col-md-4 col-lg-3 m-1">
+  
+      <Card style={{marginTop:"0px"}}>
+
             <div className="flex">
               <div className="card-body card-text">
                 <div className="card-title">
@@ -130,8 +137,12 @@ function BookingLet() {
               </div>
             </div>
           </Card>
-        </div>
+
+
       ) : null}
+      </div>
+      </div>
+
       <h3>Current Bookings</h3>
       {
 
