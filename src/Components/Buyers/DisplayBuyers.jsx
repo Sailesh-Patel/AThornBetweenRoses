@@ -24,11 +24,13 @@ function DisplayBuyers(props) {
     buyerArray.push(
       <BuyersPT
         key={buyer.firstName + " " + buyer.postcode}
+        id={buyer.id}
         firstName={buyer.firstName}
         lastName={buyer.lastName}
         address={buyer.address}
         postcode={buyer.postcode}
         phoneNumber={buyer.phoneNumber}
+        getBuyers={props.getBuyers}
       />
     );
   }
