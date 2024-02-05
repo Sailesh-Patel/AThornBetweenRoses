@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import BuyersPT from "./BuyersPT";
 
-// this is the get request for the buyers 
 
 function DisplayBuyers(props) {
   // const [buyers, setBuyers] = useState([]);

@@ -2,6 +2,7 @@ import PropTypes from "prop-types";
 import Card from "react-bootstrap/Card";
 import axios from "axios";
 
+
 // this is a render on the buyers page and how this is rendered
 
 function BuyersPT(props) {
@@ -32,8 +33,10 @@ function BuyersPT(props) {
           <p>{props.phoneNumber}</p>
 
           <p><button className="btn btn-danger" onClick={deleteBuyer}>Delete</button></p>
+          
         </div>
       </div>
+      
     </Card>
   );
 }

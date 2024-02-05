@@ -26,6 +26,7 @@ function DisplaySellers(props) {
         address={seller.address}
         postcode={seller.postcode}
         phoneNumber={seller.phoneNumber}
+        getSellers={props.getSellers}
       />
     );
   }

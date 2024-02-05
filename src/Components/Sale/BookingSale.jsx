@@ -35,6 +35,7 @@ function BookingSale() {
   return (
     <div className="booking-container">
       <div className="booking-form">
+
         <h1>Bookings for Sale</h1>
         <div class="row" style={{maxWidth:"1000px"}}>
           <div class="col">
@@ -188,6 +189,7 @@ function BookingSale() {
 
       </div>
     </div>
+
   );
 }
 export default BookingSale;

@@ -114,10 +114,12 @@ function BookingLet() {
       </div>
       <br />
       <br />
+
       <div class="col">
       {letProperty ? (
   
       <Card style={{marginTop:"0px"}}>
+
             <div className="flex">
               <div className="card-body card-text">
                 <div className="card-title">
@@ -136,9 +138,11 @@ function BookingLet() {
             </div>
           </Card>
 
+
       ) : null}
       </div>
       </div>
+
       <h3>Current Bookings</h3>
       {
 
