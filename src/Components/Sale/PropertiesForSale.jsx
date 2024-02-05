@@ -12,11 +12,12 @@ function PropertiesForSale() {
   const [postcode, setPostcode] = useState("");
   const [sales, setSales] = useState([]);
 
-  function getSales () {
-    axios.get("http://localhost:8082/PSale/get")
-      .then((response) => {setSales(response.data)})
+  function getSales() {
+    axios.get("http://localhost:8082/PSale/get").then((response) => {
+      setSales(response.data);
+    });
   }
-  useEffect(getSales, [])
+  useEffect(getSales, []);
 
   return (
     <div className="row">
@@ -34,7 +35,7 @@ function PropertiesForSale() {
                 bathrooms: parseInt(bathrooms),
                 garden,
                 address,
-                postcode
+                postcode,
               })
               .then((response) => {
                 setType("");
@@ -48,8 +49,6 @@ function PropertiesForSale() {
               })
               .catch((err) => console.error(err));
           }}
-
-          
         >
           <h1>Properties For Sale</h1>
           {/* <select value={Type} onChange={(e) => setType(e.target.value)} id="ty" type="text"><option value="semi">Semi</option><option value="semi">detached</option><option value="semi">terrace</option></select> */}

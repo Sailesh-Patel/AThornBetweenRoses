@@ -13,16 +13,15 @@ function PropertiesToLet() {
   const [lets, setLets] = useState([]);
 
   function getLets() {
-    axios.get("http://localhost:8082/PLet/get")
-      .then((response) => { setLets(response.data) })
+    axios.get("http://localhost:8082/PLet/get").then((response) => {
+      setLets(response.data);
+    });
   }
-  useEffect(getLets, [])
+  useEffect(getLets, []);
 
   return (
     <div className="row">
       <div className="col">
-
-
         <form
           className="drop-menu"
           onSubmit={(e) => {
@@ -141,9 +140,7 @@ function PropertiesToLet() {
       {/* this is the property display */}
       <DisplayLets lets={lets} />
 
-
       <br />
-
     </div>
   );
 }

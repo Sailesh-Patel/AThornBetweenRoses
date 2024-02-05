@@ -6,7 +6,7 @@ import axios from 'axios';
 function SellersPT(props) {
 
   function deleteSeller (){
-    axios.delete("http://localhost:8082/sellers/delete/" + props.id)
+    axios.delete("http://localhost:8082/Sellers/delete/" + props.id)
     .then(response => {props.getSellers()})
     .catch(err => console.error(err))
     }

@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import RS4 from "./RS4.png";
 import confetti from "canvas-confetti";
 
-//this is the render of the card for the properties 
+//this is the render of the card for the properties
 
 function PropertiesToLetPT(props) {
   const navigate = useNavigate();
@@ -50,13 +50,22 @@ function PropertiesToLetPT(props) {
           </select>
           &nbsp;
           <button
-          // this button below handles the booking system
+            // this button below handles the booking system
             onClick={() => navigate("/PropertiesToLet/BookingLet/" + props.id)}
             type="submit"
             className="btn btn-success btn-md"
           >
             {" "}
             Book a viewing{" "}
+          </button>
+          <button
+            onClick={() => navigate("/PropertiesToLet/Edit/" + props.id)}
+            style={{ marginRight: "10px" }}
+            type="submit"
+            className="btn btn-success btn-md"
+          >
+            {" "}
+            Edit Property{" "}
           </button>
         </div>
       </div>

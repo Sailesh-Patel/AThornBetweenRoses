@@ -19,31 +19,50 @@ function getBuyers () {
   }
   useEffect(getBuyers, [])
 
-  return (
-    <div>
-      <form
-        onSubmit={(e) => {
-          e.preventDefault();
-          axios
-          // this is a post to the server
-            .post("http://localhost:8082/Buyers/create", {
-              firstName,
+
+  function CheckBuyer() {
+
+
+
+    axios.get("http://localhost:8082/Buyers/get").then(response => {
+        console.log(response)
+        for (const buyers of response.data) {
+            if (buyers.firstName.toLowerCase() === firstName.toLowerCase() && buyers.lastName.toLowerCase() === lastName.toLowerCase()) {
+                     alert("Buyer already exists")
+                     return;
+            }
+        }
+    
+        axios.post("http://localhost:8082/Buyers/create",
+            { firstName,
               lastName,
               address,
               postcode,
               phoneNumber
             })
-            .then((response) => {
-              setFirstName("");
-              setLastName("");
-              setAddress("");
-              setPostcode("");
-              setPhoneNumber("");
-              getBuyers();
-            })
-            .catch((err) => console.error(err));
-        }}
-      >
+            .then(response => {
+                console.log(response);
+                setFirstName("");
+                setLastName("");
+                setAddress("");
+                setPostcode("");
+                setPhoneNumber("");
+                getBuyers();
+            }).catch(err => console.error(err))
+
+
+    })
+
+}
+
+
+  return (
+    <div>
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
+          CheckBuyer();
+        }}>
         
         {/* this is the input form on the buyers page  */}
         {" "}
@@ -97,7 +116,7 @@ function getBuyers () {
       </form>
       <br />
       <br />
-      <DisplayBuyers buyers={buyers} getBuyers={getBuyers}/> 
+      <DisplayBuyers buyers={buyers}  getBuyers={getBuyers}/> 
       {/* this is the render of the buyers page at the bottom */}
     </div>
   );
