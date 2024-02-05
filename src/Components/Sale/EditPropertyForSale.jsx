@@ -30,9 +30,9 @@ function EditPropertyForSale() {
 const handleSubmit = (e) => {
     e.preventDefault();
 
-    axios.patch("http://localhost:8082/PSale/get/" + params.id, { type, price, bedrooms, bathrooms, garden, address, postcode})
+    axios.put("http://localhost:8082/PSale/edit/" + params.id, { type, price, bedrooms, bathrooms, garden, address, postcode})
         .then(() => {
-            navigate("/PSale/get/")
+            navigate("/PropertiesForSale")
         }).catch(error => console.error(error))
     }
 

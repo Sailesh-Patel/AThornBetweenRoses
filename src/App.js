@@ -109,7 +109,7 @@ function App() {
           <Route path="/PropertiesToLet" element={<PropertiesToLet />} />
           <Route path="/PropertiesToLet/BookingLet/:id" element={<BookingLet/>}/>
           <Route path="/PropertiesForSale/BookingSale/:id" element={<BookingSale/>}/>
-          <Route path="/PropertiesForSale/Edit/:id" element={<EditPropertyForSale/>}/>
+          <Route path="/PropertiesForSale/edit/:id" element={<EditPropertyForSale/>}/>
         </Routes>
       </Router>
     </header>
