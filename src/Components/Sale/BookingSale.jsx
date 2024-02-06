@@ -17,18 +17,17 @@ function BookingSale() {
   const [booking, setBookings] = useState([]);
   const [property, setProperty] = useState();
 
+  
+
 
   function getBSales(){
     axios.get("http://localhost:8082/PSale/get/" + params.id)
-      .then((response) => {
-        console.log("Response:", response);
-        setProperty(response.data);
-        // console.log("sale:", sale);
+      .then((response) => {setProperty(response.data);
+        // console.log("Response:", response);
       })
       .catch((err) => console.error(err))}
       useEffect(getBSales, [])
   console.log(property)
-
 
 
   function CheckBooking() {
@@ -66,20 +65,21 @@ function BookingSale() {
 }
 
 
+
+
   return (
     <div className="booking-container">
       <div className="booking-form">
-
         <h1>Bookings for Sale</h1>
         <div class="row" style={{maxWidth:"1000px"}}>
           <div class="col">
             <form
               onSubmit={(e) => {
                 e.preventDefault();
-                console.log("submission successful")
                 CheckBooking();
               }}>
             
+
               <label htmlFor="fn">Full Name &nbsp;</label>
               <input
                 value={name}

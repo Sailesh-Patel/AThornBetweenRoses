@@ -16,16 +16,6 @@ function BookingLet(props) {
   const [letBooking, setLetBookings] = useState([]);
   const [letProperty, setLetProperty] = useState();
 
-  // set the property and retrieve the property by ID from the PTL page
-  
-  // function getBookings (){
-  //   axios.get("http://localhost:8082/BLet/get/" + params.id)
-  //     .then((response) => {setLetBookings(response.data);
-  //       // console.log("sale:", sale);
-  //     })
-  //     .catch((err) => console.error(err))}
-  //     useEffect(getBookings, [])
-  // console.log(letBooking)
 
 
   function getPLets(){
@@ -71,7 +61,6 @@ function BookingLet(props) {
     })
 
 }
-
 
 
   return (
