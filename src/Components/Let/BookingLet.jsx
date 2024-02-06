@@ -224,7 +224,7 @@ function BookingLet(props) {
               Edit Booking{" "}
             </button>
 
-                  <td><button style={{width: "80px"}}className="btn btn-danger" onClick={() => {
+                  <td><button className="btn btn-danger" onClick={() => {
                         axios.delete("http://localhost:8082/BLet/delete/" + book.id)
                             .then(res => { getPLets() })
                             .catch(err => console.error(err));

@@ -35,7 +35,7 @@ function EditBookingSale() {
             timeSlot
     })
     .then(() => {
-      navigate("/PropertiesForSale");
+      navigate("/PropertiesForSale/BookingSale/" + params.id);
     })
     .catch((error) => console.error(error));
 };

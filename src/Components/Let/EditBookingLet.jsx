@@ -35,7 +35,7 @@ function EditBookingLet() {
             timeSlot
     })
     .then(() => {
-      navigate("/PropertiesToLet");
+      navigate("/PropertiesToLet/BookingLet/" + params.id);
     })
     .catch((error) => console.error(error));
 };

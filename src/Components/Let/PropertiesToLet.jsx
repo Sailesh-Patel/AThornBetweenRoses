@@ -11,6 +11,7 @@ function PropertiesToLet() {
   const [address, setAddress] = useState("");
   const [postcode, setPostcode] = useState("");
   const [lets, setLets] = useState([]);
+  const [propertyStatus, setPropertyStatus] = useState("To Let")
 
   function getLets() {
     axios.get("http://localhost:8082/PLet/get").then((response) => {
@@ -36,6 +37,7 @@ function PropertiesToLet() {
                 garden,
                 address,
                 postcode,
+                propertyStatus
               })
 
               .then((response) => {
@@ -46,6 +48,7 @@ function PropertiesToLet() {
                 setGarden("");
                 setAddress("");
                 setPostcode("");
+                setPropertyStatus("To Let");
                 getLets();
               })
               .catch((err) => console.error(err));

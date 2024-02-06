@@ -35,6 +35,7 @@ function DisplaySales(props) {
         garden={psale.garden}
         address={psale.address}
         postcode={psale.postcode}
+        propertyStatus={psale.propertyStatus}
         id={psale.id}
        
       />
