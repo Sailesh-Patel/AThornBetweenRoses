@@ -2,8 +2,10 @@ import PropTypes from 'prop-types'
 import Sellers from './Sellers';
 import Card from "react-bootstrap/Card";
 import axios from 'axios';
+import { useNavigate } from "react-router-dom";
 
 function SellersPT(props) {
+  const navigate = useNavigate();
 
   function deleteSeller (){
     axios.delete("http://localhost:8082/Sellers/delete/" + props.id)
@@ -27,7 +29,12 @@ function SellersPT(props) {
           <p>{props.address}</p>
           <p>{props.postcode}</p>
           <p>{props.phoneNumber}</p>
-
+          <button onClick={() =>
+              navigate("/Sellers/Edit/" + props.id)
+            }style={{marginTop: "10px"}} type="submit" className="btn btn-success btn-md">
+              {" "}
+              Edit Seller{" "}
+            </button>
           <p><button className="btn btn-danger" onClick={deleteSeller}>Delete</button></p>
         </div>
       </div>

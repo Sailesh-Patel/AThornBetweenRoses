@@ -1,11 +1,13 @@
 import PropTypes from "prop-types";
 import Card from "react-bootstrap/Card";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 // this is a render on the buyers page and how this is rendered
 
 function BuyersPT(props) {
-
+  const navigate = useNavigate();
+  
   function deleteBuyer (){
     axios.delete("http://localhost:8082/Buyers/delete/" + props.id)
     .then(response => {props.getBuyers()})
@@ -29,7 +31,12 @@ function BuyersPT(props) {
           <p>{props.address}</p>
           <p>{props.postcode}</p>
           <p>{props.phoneNumber}</p>
-
+          <button onClick={() =>
+              navigate("/Buyers/Edit/" + props.id)
+            }style={{marginTop: "10px"}} type="submit" className="btn btn-success btn-md">
+              {" "}
+              Edit Buyer{" "}
+            </button>
           <p><button className="btn btn-danger" onClick={deleteBuyer}>Delete</button></p>
         </div>
       </div>

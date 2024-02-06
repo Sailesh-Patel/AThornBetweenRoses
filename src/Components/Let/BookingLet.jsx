@@ -38,6 +38,42 @@ function BookingLet(props) {
   console.log(letProperty)
 
 
+  function CheckBooking() {
+    axios.get("http://localhost:8082/BLet/get").then(response => {
+        console.log(response)
+        for (const booking of response.data) {
+            if (booking.date === date && booking.timeSlot === timeSlot) {
+                     alert("Booking not available")
+                     return;
+            }
+        }
+    
+        axios.post("http://localhost:8082/BLet/create",
+            { 
+              name,
+              email,
+              phoneNumber,
+              date,
+              timeSlot,
+              propertiesToLet: { id: params.id }
+            })
+            .then(response => {
+                console.log(response);
+                setName("");
+                setEmail("");
+                setPhoneNumber("");
+                setDate("");
+                setTimeSlot("");
+                getPLets();
+            }).catch(err => console.error(err))
+
+
+    })
+
+}
+
+
+
   return (
     <div className="booking-container">
       <div className="booking-form">
@@ -47,30 +83,8 @@ function BookingLet(props) {
       <form
         onSubmit={(e) => {
           e.preventDefault();
-          axios
-            // posting the updated booikng info
-            .post("http://localhost:8082/BLet/create", {
-              name,
-              email,
-              phoneNumber,
-              date,
-              timeSlot,
-              propertiesToLet: { id: params.id }
-
-            })
-            .then((response) => {
-              setName("");
-              setEmail("");
-              setPhoneNumber("");
-              setDate("");
-              setTimeSlot("");
-              getPLets();
-              
-
-            })
-            .catch((err) => console.error(err));
-        }}
-      >
+          CheckBooking();
+        }}>
         {/* this is the booking imput form to submit a booking  */}
 
         <label htmlFor="fn">Full Name &nbsp;</label>
@@ -107,13 +121,19 @@ function BookingLet(props) {
           className="form-control"
         ></input>
         <label htmlFor="pn">Time Slot</label>
-        <input
-          value={timeSlot}
-          onChange={(e) => setTimeSlot(e.target.value)}
-          id="pn"
-          type="time"
-          className="form-control"
-        ></input>
+       <select onChange={(e) => setTimeSlot(e.target.value)} value={timeSlot} className="form-control" required>
+                <option value="">Select Time</option>
+                <option value="8AM">8:00-9:00</option>
+                <option value="9AM">9:00-10:00</option>
+                <option value="10AM">10:00-11:00</option>
+                <option value="11AM">11:00-12:00</option>
+                <option value="12PM">12:00-13:00</option>
+                <option value="1PM">13:00-14:00</option>
+                <option value="2PM">14:00-15:00</option>
+                <option value="3PM">15:00-16:00</option>
+                <option value="4PM">16:00-17:00</option>
+            </select>
+
         <br />
         <button type="submit" className="btn btn-success btn-md">
           Submit
@@ -197,7 +217,14 @@ function BookingLet(props) {
 
                   <td> {book.timeSlot}</td>
 
-                  <td><button onClick={() => {
+                  <button onClick={() =>
+              navigate("/BookingLet/Edit/" + book.id)
+            }style={{marginTop: "10px"}} type="submit" className="btn btn-success btn-md">
+              {" "}
+              Edit Booking{" "}
+            </button>
+
+                  <td><button style={{width: "80px"}}className="btn btn-danger" onClick={() => {
                         axios.delete("http://localhost:8082/BLet/delete/" + book.id)
                             .then(res => { getPLets() })
                             .catch(err => console.error(err));

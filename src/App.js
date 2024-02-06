@@ -17,6 +17,10 @@ import BookingSale from "./Components/Sale/BookingSale";
 import Logo from "./Logo.png"
 import EditPropertyForSale from "./Components/Sale/EditPropertyForSale";
 import EditPropertyToLet from "./Components/Let/EditPropertyToLet";
+import EditBuyers from "./Components/Buyers/EditBuyers";
+import EditSellers from "./Components/Sellers/EditSellers";
+import EditBookingSale from "./Components/Sale/EditBookingSale";
+import EditBookingLet from "./Components/Let/EditBookingLet";
 
 function App() {
   return (
@@ -111,6 +115,10 @@ function App() {
           <Route path="/PropertiesForSale/BookingSale/:id" element={<BookingSale />} />
           <Route path="/PropertiesForSale/edit/:id" element={<EditPropertyForSale />} />
           <Route path="/PropertiesToLet/edit/:id" element={<EditPropertyToLet />} />
+          <Route path="/Buyers/edit/:id" element={<EditBuyers />} />
+          <Route path="/Sellers/edit/:id" element={<EditSellers />} />
+          <Route path="/BookingSale/edit/:id" element={<EditBookingSale />} />
+          <Route path="/BookingLet/edit/:id" element={<EditBookingLet />} />
         </Routes>
       </Router>
     </header>
