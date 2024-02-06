@@ -136,7 +136,7 @@ function EditPropertyToLet() {
             type="text"
             className="form-control"
           >
-            <option value="For Let">For Let</option>
+            <option value="To Let">To Let</option>
             <option value="Under Offer">Under Offer</option>
             <option value="Withdrawn">Withdrawn</option>
           </select>

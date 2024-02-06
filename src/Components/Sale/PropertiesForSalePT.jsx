@@ -88,7 +88,7 @@ function PropertiesForSalePT(props) {
           </button> */}
           <button onClick={() =>
               navigate("/PropertiesForSale/Edit/" + props.id)
-            }style={{marginTop: "10px"}} type="submit" className="btn btn-success btn-md">
+            }style={{ marginRight: "10px"}} type="submit" className="btn btn-success btn-md">
               {" "}
               Edit Property{" "}
             </button>  
