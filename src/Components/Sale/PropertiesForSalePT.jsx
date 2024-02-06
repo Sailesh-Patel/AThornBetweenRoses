@@ -41,11 +41,12 @@ function PropertiesForSalePT(props) {
           <p> {"Garden: " + props.garden}</p>
           <p> {"Address: " + props.address}</p>
           <p> {"Postcode: " + props.postcode}</p>
-          <select>
+          <p> {"Property Status: " + props.propertyStatus}</p>
+          {/* <select>
             <option>For Sale</option>
             <option>Under Offer</option>
             <option>Withdrawn</option>
-          </select>
+          </select> */}
           &nbsp;
           <button style={{marginTop: "10px"}}
             onClick={() =>
@@ -80,5 +81,6 @@ PropertiesForSalePT.propTypes = {
   garden: PropTypes.string.isRequired,
   address: PropTypes.string.isRequired,
   postcode: PropTypes.string.isRequired,
+  propertyStatus: PropTypes.string.isRequired
 };
 export default PropertiesForSalePT;

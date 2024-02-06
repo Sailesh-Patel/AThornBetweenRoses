@@ -12,6 +12,7 @@ function EditPropertyForSale() {
     const [garden, setGarden] = useState("");
     const [address, setAddress] = useState("");
     const [postcode, setPostcode] = useState("");
+    const [propertyStatus, setPropertyStatus] = useState("");
     
     useEffect(() => {
         axios.get("http://localhost:8082/PSale/get/" + params.id)
@@ -24,13 +25,14 @@ function EditPropertyForSale() {
             setGarden(res.data.garden);
             setAddress(res.data.address);
             setPostcode(res.data.postcode);
+            setPropertyStatus(res.data.propertyStatus);
         }).catch(error => console.error(error));
 }, []);
 
 const handleSubmit = (e) => {
     e.preventDefault();
 
-    axios.put("http://localhost:8082/PSale/edit/" + params.id, { type, price, bedrooms, bathrooms, garden, address, postcode})
+    axios.put("http://localhost:8082/PSale/edit/" + params.id, { type, price, bedrooms, bathrooms, garden, address, postcode, propertyStatus})
         .then(() => {
             navigate("/PropertiesForSale")
         }).catch(error => console.error(error))
@@ -110,6 +112,18 @@ return(
             type="text"
             className="form-control"
           ></input>
+          <label htmlFor="pstatus">Property Status</label>
+          <select
+            value={propertyStatus}
+            onChange={(e) => setPropertyStatus(e.target.value)}
+            id="pstatus"
+            type="text"
+            className="form-control"
+          >
+            <option value="For Sale">For Sale</option>
+            <option value="Under Offer">Under Offer</option>
+            <option value="Withdrawn">Withdrawn</option>
+          </select>
           <br />
           <div>
             <button type="submit" className="btn btn-success btn-md">

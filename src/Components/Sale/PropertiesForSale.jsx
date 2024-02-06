@@ -11,6 +11,7 @@ function PropertiesForSale() {
   const [address, setAddress] = useState("");
   const [postcode, setPostcode] = useState("");
   const [sales, setSales] = useState([]);
+  const [propertyStatus, setPropertyStatus] = useState("For Sale")
 
   function getSales() {
     axios.get("http://localhost:8082/PSale/get").then((response) => {
@@ -36,6 +37,7 @@ function PropertiesForSale() {
                 garden,
                 address,
                 postcode,
+                propertyStatus
               })
               .then((response) => {
                 setType("");
@@ -45,6 +47,7 @@ function PropertiesForSale() {
                 setGarden("");
                 setAddress("");
                 setPostcode("");
+                setPropertyStatus("For Sale");
                 getSales();
               })
               .catch((err) => console.error(err));

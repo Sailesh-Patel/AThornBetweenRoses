@@ -12,6 +12,7 @@ function EditPropertyToLet() {
   const [garden, setGarden] = useState("");
   const [address, setAddress] = useState("");
   const [postcode, setPostcode] = useState("");
+  const [propertyStatus, setPropertyStatus] = useState("");
 
   useEffect(() => {
     axios
@@ -25,6 +26,7 @@ function EditPropertyToLet() {
         setGarden(res.data.garden);
         setAddress(res.data.address);
         setPostcode(res.data.postcode);
+        setPropertyStatus(res.data.propertyStatus);
       })
       .catch((error) => console.error(error));
   }, []);
@@ -41,6 +43,7 @@ function EditPropertyToLet() {
         garden,
         address,
         postcode,
+        propertyStatus
       })
       .then(() => {
         navigate("/PropertiesToLet");
@@ -125,6 +128,18 @@ function EditPropertyToLet() {
           type="text"
           className="form-control"
         ></input>
+        <label htmlFor="pstatus">Property Status</label>
+          <select
+            value={propertyStatus}
+            onChange={(e) => setPropertyStatus(e.target.value)}
+            id="pstatus"
+            type="text"
+            className="form-control"
+          >
+            <option value="For Sale">For Let</option>
+            <option value="Under Offer">Under Offer</option>
+            <option value="Withdrawn">Withdrawn</option>
+          </select>
         <br />
         <div>
           <button type="submit" className="btn btn-success btn-md">
