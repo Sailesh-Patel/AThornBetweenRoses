@@ -13,9 +13,33 @@ function PropertiesToLetPT(props) {
       particleCount: 500,
       spread: 320,
     });
+  };
+
+    const handleBookings = () =>{
+      navigate("/PropertiesToLet/BookingLet/" + props.id)
+  
+  } 
+  
+    function buttonDisplay() {
+      
+      if(props.propertyStatus !== "To Let") {
+          return (
+            <>
+              <button style={{marginLeft: "10px"}} className='btn btn-success' disabled="disabled">Book a viewing</button>
+            </>
+          )
+        } else {
+          return (
+              <>
+              <button style={{marginLeft: "10px"}} className='btn btn-success ' onClick={handleBookings}>Book a viewing</button>
+              </>
+          )
+        }
+      }
+      
 
     // above is the function that run confetti
-  };
+  
   return (
     <Card className="col-sm-6 col-md-4 col-lg-3 m-4">
       <div className="flex">
@@ -50,7 +74,8 @@ function PropertiesToLetPT(props) {
             <option>Withdrawn</option>
           </select> */}
           &nbsp;
-          <button
+          
+          {/* <button
             // this button below handles the booking system
             onClick={() => navigate("/PropertiesToLet/BookingLet/" + props.id)}
             type="submit"
@@ -58,7 +83,8 @@ function PropertiesToLetPT(props) {
           >
             {" "}
             Book a viewing{" "}
-          </button>
+          </button> */}
+          {buttonDisplay()}
           <button
             onClick={() => navigate("/PropertiesToLet/Edit/" + props.id)}
             style={{ marginRight: "10px" }}

@@ -14,6 +14,29 @@ function PropertiesForSalePT(props) {
       spread: 320,
     });
   };
+
+  const handleBookings = () =>{
+    navigate("/PropertiesForSale/BookingSale/" + props.id)
+
+} 
+
+  function buttonDisplay() {
+    
+    if(props.propertyStatus !== "For Sale") {
+        return (
+          <>
+            <button style={{marginLeft: "10px"}} className='btn btn-success' disabled="disabled">Book a viewing</button>
+          </>
+        )
+      } else {
+        return (
+            <>
+            <button style={{marginLeft: "10px"}} className='btn btn-success ' onClick={handleBookings}>Book a viewing</button>
+            </>
+        )
+      }
+    }
+
   return (
     <Card className="col-sm-6 col-md-4 col-lg-3 m-4">
       <div className="flex">
@@ -48,7 +71,8 @@ function PropertiesForSalePT(props) {
             <option>Withdrawn</option>
           </select> */}
           &nbsp;
-          <button style={{marginTop: "10px"}}
+          {buttonDisplay()}
+          {/* <button style={{marginTop: "10px"}}
             onClick={() =>
               navigate("/PropertiesForSale/BookingSale/" + props.id)
             }
@@ -57,7 +81,7 @@ function PropertiesForSalePT(props) {
           >
             {" "}
             Book a viewing{" "}
-          </button>
+          </button> */}
           <button onClick={() =>
               navigate("/PropertiesForSale/Edit/" + props.id)
             }style={{marginTop: "10px"}} type="submit" className="btn btn-success btn-md">
