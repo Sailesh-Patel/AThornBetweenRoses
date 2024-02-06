@@ -35,7 +35,7 @@ function SellersPT(props) {
               {" "}
               Edit Seller{" "}
             </button>
-          <p><button className="btn btn-danger" onClick={deleteSeller}>Delete</button></p>
+          <button style={{marginTop: "10px"}} className="btn btn-danger" onClick={deleteSeller}>Delete Seller</button>
         </div>
       </div>
     </Card>
